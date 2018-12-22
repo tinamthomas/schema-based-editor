@@ -1,9 +1,18 @@
 import * as React from 'react'
 
-import Hello from './Hello';
+import Text from './editors/Text';
+
+const schema = {
+    type: "object",
+    properties: {
+      name: {
+          type: "string"
+      }
+    },
+};
 
 export default class Main extends React.Component{
     render() {
-        return <Hello name='Tina'/>
+        return <Text/>;
     }
 }
