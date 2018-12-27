@@ -1,11 +1,14 @@
 import * as React from 'react'
 
-import Text from './editors/Text';
+import Editor from './Editor';
 
 const schema = {
     type: "object",
     properties: {
-      name: {
+      firstname: {
+          type: "string"
+      },
+      secondname: {
           type: "string"
       }
     },
@@ -13,6 +16,6 @@ const schema = {
 
 export default class Main extends React.Component{
     render() {
-        return <Text/>;
+        return <Editor schema={schema}/>;
     }
 }

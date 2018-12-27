@@ -1,5 +1,11 @@
-import TextEditor from './Text';
+import TextEditor from "./Text";
+import ObjectEditor from "./Object";
 
-export default {
-  string: TextEditor,
+const map = {
+  "string": TextEditor,
+  "object": ObjectEditor,
+};
+
+export default function (type: string): any {
+  return map[type];
 };
