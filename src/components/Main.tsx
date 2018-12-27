@@ -1,6 +1,6 @@
 import * as React from 'react'
-
 import Editor from './Editor';
+import {Grid} from 'semantic-ui-react';
 
 const schema = {
     type: "object",
@@ -16,6 +16,14 @@ const schema = {
 
 export default class Main extends React.Component{
     render() {
-        return <Editor schema={schema}/>;
+        return <Grid columns={2} style={{'margin-top': '20px'}}>
+            <Grid.Row>
+                <Grid.Column width={2}>
+                </Grid.Column>
+                <Grid.Column width={14}>
+                    <Editor schema={schema}/>
+                </Grid.Column>
+            </Grid.Row>
+        </Grid>;
     }
 }

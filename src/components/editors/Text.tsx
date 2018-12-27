@@ -5,7 +5,7 @@ import IEditorProps, {IEditorState} from "./IEditor";
 
 export default class TextEditor extends React.Component<IEditorProps, IEditorState>{
     render() {
-        return <div>
+        return <div style={{'margin': '10px'}}>
             <Input label={this.props.label}/>
         </div>
     }
