@@ -1,17 +1,7 @@
 import * as React from 'react';
 
-import IEditorProps, {IEditorState, ISchema} from "./IEditor";
+import IEditorProps, {IEditorState} from "./IEditor";
 import editorMap from './editorMap';
-
-const schema = {
-    type: "object",
-    properties: {
-        name: {
-            type: "string"
-        }
-    },
-};
-
 
 export default class ObjectEditor extends React.Component<IEditorProps, IEditorState>{
     render() {
