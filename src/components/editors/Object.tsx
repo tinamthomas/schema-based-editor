@@ -10,7 +10,13 @@ export default class ObjectEditor extends React.Component<IEditorProps, IEditorS
         return <div>
             {propertyKeys.map((property: string) => {
                 const EditorComponent = editorMap(properties[property].type);
-                return <EditorComponent schema={properties[property]} label={property}/>;
+                const value = this.props.value ? this.props.value[property] : '' ;
+
+                return <EditorComponent
+                    schema={properties[property]}
+                    label={property}
+                    value={value}
+                />;
             })}
         </div>
     }
