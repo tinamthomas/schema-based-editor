@@ -1,6 +1,6 @@
 import * as React from 'react'
-import Editor from './Editor';
 import {Grid} from 'semantic-ui-react';
+import editorMap from './editors/editorMap';
 
 const schema = {
     type: "object",
@@ -37,15 +37,17 @@ export default class Main extends React.Component<{}, IMainState>{
     }
 
     render() {
+        const EditorComponent = editorMap(schema.type);
+
         return <Grid columns={2} style={{'margin-top': '20px'}}>
             <Grid.Row>
                 <Grid.Column width={2}>
                 </Grid.Column>
                 <Grid.Column width={14}>
-                    <Editor
+                    <EditorComponent
                         schema={schema}
                         value={this.state.value}
-                        onChange={(value) => this.handleChange(value)}
+                        onChange={this.handleChange}
                     />
                 </Grid.Column>
             </Grid.Row>
