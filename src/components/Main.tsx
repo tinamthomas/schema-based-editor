@@ -10,13 +10,20 @@ const schema = {
       },
       secondname: {
           type: "string"
+      },
+      departments: {
+          type: "array",
+          items: {
+              type: 'string'
+          }
       }
     },
 };
 
 const initialValue = {
     firstname: 'Someone here',
-    secondname: 'Someone else'
+    secondname: 'Someone else',
+    departments: ['1','2']
 };
 
 interface IMainState {

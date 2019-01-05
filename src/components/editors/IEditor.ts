@@ -1,6 +1,7 @@
 export interface ISchema {
     type: string,
     properties?: {[k: string]: ISchema},
+    items?: ISchema,
 }
 
 interface IEditorProps {
