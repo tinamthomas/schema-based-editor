@@ -19,10 +19,17 @@ const schema = {
     }
 };
 
+const details = {
+    name: 'Someone',
+    address: 'Somewhere',
+};
+
 describe('Object Edtior', () => {
    let wrapper;
+   let onChangeMock = jest.fn();
+
    beforeEach(() => {
-       wrapper = shallow(<ObjectEditor schema={schema}/>);
+       wrapper = shallow(<ObjectEditor schema={schema} onChange={onChangeMock}/>);
    });
 
    it('should find editor for each property in object', () => {
@@ -44,14 +51,17 @@ describe('Object Edtior', () => {
     });
 
    it('should pass appropriate values to each key in object', () => {
-       const details = {
-           name: 'Someone',
-           address: 'Somewhere',
-       };
        wrapper.setProps({value: details});
 
        const editors = wrapper.find('DummyComponent');
        expect(editors.at(0).props().value).toBe(details.name);
        expect(editors.at(1).props().value).toBe(details.address);
+   });
+
+   it('should pass onChange to each key', () => {
+       wrapper.setProps({value: details});
+       wrapper.find('DummyComponent').at(0).props().onChange('newValue');
+
+       expect(onChangeMock).toBeCalledWith({name:'newValue', address:'Somewhere'});
    });
 });

@@ -6,7 +6,7 @@ export interface ISchema {
 interface IEditorProps {
     schema: ISchema,
     label?: string,
-    onChange?: () => void;
+    onChange?: (val: any) => any;
     value?: any;
 };
 

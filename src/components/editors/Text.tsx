@@ -8,7 +8,7 @@ export default class TextEditor extends React.Component<IEditorProps, IEditorSta
         return <div style={{'margin': '10px'}}>
                 <Input
                     label={this.props.label}
-                    onChange={this.props.onChange}
+                    onChange={(event) => this.props.onChange(event.target.value)}
                     value={this.props.value}
                 />
             </div>;

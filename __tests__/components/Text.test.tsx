@@ -5,7 +5,7 @@ import TextEditor from "../../src/components/editors/Text";
 
 describe('Text Editor', () => {
     let wrapper;
-    const onChangeMock = {};
+    const onChangeMock = jest.fn();
     beforeEach(() => {
         wrapper = shallow(<TextEditor label='some text' onChange={onChangeMock}/>);
     });
@@ -17,6 +17,9 @@ describe('Text Editor', () => {
     });
 
     it('should handle on change', () => {
-        expect(wrapper.find('Input').props().onChange).toBe(onChangeMock);
+        const event = {target: {value: 'someValue'}};
+
+        wrapper.find('Input').props().onChange(event);
+        expect(onChangeMock).toHaveBeenCalledWith('someValue');
     });
 });

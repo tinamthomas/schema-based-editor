@@ -19,14 +19,34 @@ const initialValue = {
     secondname: 'Someone else'
 };
 
-export default class Main extends React.Component{
+interface IMainState {
+    value: any;
+}
+
+export default class Main extends React.Component<{}, IMainState>{
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: initialValue,
+        };
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(value) {
+            this.setState({value});
+    }
+
     render() {
         return <Grid columns={2} style={{'margin-top': '20px'}}>
             <Grid.Row>
                 <Grid.Column width={2}>
                 </Grid.Column>
                 <Grid.Column width={14}>
-                    <Editor schema={schema} value={initialValue}/>
+                    <Editor
+                        schema={schema}
+                        value={this.state.value}
+                        onChange={(value) => this.handleChange(value)}
+                    />
                 </Grid.Column>
             </Grid.Row>
         </Grid>;
